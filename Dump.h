@@ -107,10 +107,7 @@ static void dump(const Json::object &values, std::string &out) {
     out += "}"; 
 }
 
-// 定义Json类的成员函数dump，用于将Json对象转化为JSON字符串并追加到out中
-void Json::dump(std::string &out) const {
-    jsonValue->dump(out); // 调用JsonImpl类的dump函数将Json对象转化为JSON字符串并追加到out中
-}
+
 
 
 #endif

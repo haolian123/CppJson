@@ -7,7 +7,7 @@
 #include<initializer_list>
 #include<memory>
 #include<cmath>
-
+#include<limits>
 // 定义解析策略的枚举，支持标准解析和带注释的解析
 enum JsonParse{
     STANDARD,COMMENTS
@@ -39,7 +39,7 @@ public:
     Json(object && values);
 
     // 从具有 toJson 成员函数的类实例构造 Json
-    template<class T,class = decltype(&T::toJson())>
+    template<class T,class = decltype(&T::toJson)>
     Json(const T & t) : Json(t.toJson()){}
 
     // 从支持 begin/end 迭代器的容器构造 Json 对象
@@ -114,6 +114,7 @@ public:
     // 检查 Json 对象是否符合指定形状
     typedef std::initializer_list<std::pair<std::string,Type>> shape;
     bool hasShape(const shape &types,std::string &err) const;
+    
 private:
     std::shared_ptr<JsonValue> jsonValue; // 指向实际存储的智能指针
     

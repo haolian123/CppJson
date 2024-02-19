@@ -119,26 +119,6 @@ private:
     
 };
 
-// Json 值的基类
-class JsonValue{
-protected:
-    friend class Json;
-    friend class JsonInt;
-    friend class JsonDouble;
-    virtual Json::Type type() const = 0;
-    virtual bool equals(const JsonValue*other) const = 0;
-    virtual bool less(const JsonValue*other) const = 0;
-    virtual void dump(std::string& out) const = 0;
-    virtual double numberValue() const;
-    virtual int intValue() const;
-    virtual bool boolValue() const;
-    virtual const std::string &stringValue() const;
-    virtual const Json::array &arrayItems() const;
-    virtual const Json::object &objectItems() const;
-    virtual const Json& operator[] (size_t i) const;
-    virtual const Json& operator[](const std::string &key) const;
-    virtual ~JsonValue(){}
 
-};
 
 #endif
